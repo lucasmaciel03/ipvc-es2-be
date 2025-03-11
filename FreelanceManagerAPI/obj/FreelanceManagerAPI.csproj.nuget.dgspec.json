@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj": {}
+    "c:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj": {
+    "c:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj",
+        "projectUniqueName": "c:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj",
         "projectName": "FreelanceManagerAPI",
-        "projectPath": "C:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj",
+        "projectPath": "c:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\FreelanceManagerAPI.csproj",
         "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\obj\\",
+        "outputPath": "c:\\Users\\Ricardo\\Desktop\\school\\ipvc-es2-be\\FreelanceManagerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

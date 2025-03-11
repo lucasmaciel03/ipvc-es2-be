@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FreelanceManagerAPI.Data.Context
 {
-    public class AppDBContext : IdentityDbContext<User>
+    public class AppDBContext : IdentityDbContext<ApplicationUser>
     {
         protected readonly IHttpContextAccessor _httpAccessor;
 
