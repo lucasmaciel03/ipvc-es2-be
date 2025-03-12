@@ -1,15 +1,16 @@
 ﻿using FreelanceManagerAPI.Data.Context;
 using FreelanceManagerAPI.Data.Entities;
+using FreelanceManagerAPI.Data.Repositories;
 using FreelanceManagerAPI.Data.UnitOfWork;
 
-namespace CleverTours_API.Data.UnitOfWork
+namespace FreelanceManagerAPI.Data.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly AppDBContext _databaseContext;
 
         #region repositories
-
+        private IAppRepository<Client> _clientsRepository;
         #endregion
 
         public UnitOfWork(AppDBContext dbContext)
@@ -18,7 +19,10 @@ namespace CleverTours_API.Data.UnitOfWork
         }
 
         #region repositories
-
+        public IAppRepository<Client> ClientsRepository
+        {
+            get { return _clientsRepository ??= new AppRepository<Client>(_databaseContext); }
+        }
         #endregion
 
         public int Commit() => _databaseContext.SaveChanges();

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FreelanceManagerAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250311214705_Add AuthenticationController")]
-    partial class AddAuthenticationController
+    [Migration("20250311222157_Initial Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

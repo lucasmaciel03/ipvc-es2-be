@@ -1,9 +1,10 @@
 
 using System.Text;
-using CleverTours_API.Data.UnitOfWork;
+using FreelanceManagerAPI.Data._seed;
 using FreelanceManagerAPI.Data.Context;
 using FreelanceManagerAPI.Data.Entities;
 using FreelanceManagerAPI.Data.UnitOfWork;
+using FreelanceManagerAPI.Services.AppConstants;
 using FreelanceManagerAPI.Services.ApplicationUsers;
 using FreelanceManagerAPI.Services.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -46,6 +47,8 @@ builder.Services.AddCors(o => o.AddPolicy("CorsPolicy", builder => { builder.All
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IApplicationUsersService, ApplicationUsersService>();
+builder.Services.AddScoped<IAppConstantsService, AppConstantsService>();
+
 
 
 
@@ -58,6 +61,8 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<AppDBContext>();
     context.Database.Migrate();
 }
+
+await SeedData.SeedDataAsync(app.Services);
 
 app.UseSwagger().UseSwaggerUI();
 

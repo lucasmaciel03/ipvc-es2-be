@@ -9,7 +9,9 @@ namespace FreelanceManagerAPI.Data.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        public ApplicationUser() { }
+        public ApplicationUser()
+        {
+        }
         public ApplicationUser(ApplicationUserModel model)
         {
             Email = model.Email;
