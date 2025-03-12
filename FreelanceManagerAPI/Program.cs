@@ -7,6 +7,7 @@ using FreelanceManagerAPI.Data.UnitOfWork;
 using FreelanceManagerAPI.Services.AppConstants;
 using FreelanceManagerAPI.Services.ApplicationUsers;
 using FreelanceManagerAPI.Services.Authentication;
+using FreelanceManagerAPI.Services.Clients;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IApplicationUsersService, ApplicationUsersService>();
 builder.Services.AddScoped<IAppConstantsService, AppConstantsService>();
+builder.Services.AddScoped<IClientsService, ClientsService>();
 
 
 

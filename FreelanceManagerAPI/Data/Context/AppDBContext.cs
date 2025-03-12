@@ -17,6 +17,7 @@ namespace FreelanceManagerAPI.Data.Context
             _httpAccessor = httpAccessor;
         }
         #region database tables
+        public DbSet<Client> Clients { get; set; }
         #endregion
         protected override void OnModelCreating(ModelBuilder builder)
         {
