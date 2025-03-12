@@ -527,8 +527,6 @@ FodyWeavers.xsd
 # .NET Core build folders
 bin/
 obj/
-FreelanceManagerAPI/obj/
-FreelanceManagerAPI/bin/
 
 # Common node modules locations
 /node_modules
