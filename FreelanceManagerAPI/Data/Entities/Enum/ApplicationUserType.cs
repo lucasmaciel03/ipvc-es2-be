@@ -6,4 +6,10 @@
         public const string Admin = "Admin";
         public const string Normal = "Normal";
     }
+    public enum ApplicationUserType
+    {
+        SuperAdmin,
+        Admin,
+        Normal
+    }
 }

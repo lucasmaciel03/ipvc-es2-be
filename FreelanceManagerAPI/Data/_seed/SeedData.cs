@@ -48,8 +48,8 @@ namespace FreelanceManagerAPI.Data._seed
                         SecurityStamp = Guid.NewGuid().ToString(),
                         LockoutEnabled = false,
                         FullName = sa.FullName,
-                        CreatedBy = "Super",
-                        UpdatedBy = ""
+                        // CreatedBy = "Super",
+                        // UpdatedBy = ""
 
                     };
 

@@ -18,6 +18,8 @@ namespace FreelanceManagerAPI.Data.Context
         }
         #region database tables
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectUser> ProjectUsers { get; set; }
         #endregion
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -42,7 +44,7 @@ namespace FreelanceManagerAPI.Data.Context
 
             if (entries != null)
             {
-                string identityName = _httpAccessor.HttpContext?.User?.Identity?.Name;
+                string identityName = _httpAccessor.HttpContext?.User?.Identity?.Name ?? "unknown";
 
                 foreach (var entry in entries)
                 {

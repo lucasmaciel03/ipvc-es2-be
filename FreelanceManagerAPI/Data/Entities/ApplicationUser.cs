@@ -26,9 +26,9 @@ namespace FreelanceManagerAPI.Data.Entities
 
         public string FullName { get; set; }
         public DateTime? CreatedAt { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = "unknown";
         public DateTime? UpdatedAt { get; set; }
-        public string UpdatedBy { get; set; }
+        public string UpdatedBy { get; set; } = "unknown";
         public bool IsDeleted { get; set; } = false;
     }
 }
