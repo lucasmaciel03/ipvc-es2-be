@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FreelanceManagerAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250316144327_Entities add")]
-    partial class Entitiesadd
+    [Migration("20250316170633_Project Entity Update")]
+    partial class ProjectEntityUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -205,6 +205,9 @@ namespace FreelanceManagerAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
                     b.Property<Guid?>("ClientId")
                         .HasColumnType("uuid");
 
@@ -258,6 +261,8 @@ namespace FreelanceManagerAPI.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("ClientId");
 
@@ -536,9 +541,15 @@ namespace FreelanceManagerAPI.Migrations
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Project", b =>
                 {
+                    b.HasOne("FreelanceManagerAPI.Data.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("FreelanceManagerAPI.Data.Entities.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId");
+
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Client");
                 });

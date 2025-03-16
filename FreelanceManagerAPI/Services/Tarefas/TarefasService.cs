@@ -69,7 +69,7 @@ namespace FreelanceManagerAPI.Services.Tarefas
         public async Task<string> GetNextCodeAsync()
         {
             int newNumber = await GetNextNumberAsync();
-            return $"CLI{newNumber.ToString("0000")}";
+            return $"TAR{newNumber.ToString("0000")}";
         }
 
     }

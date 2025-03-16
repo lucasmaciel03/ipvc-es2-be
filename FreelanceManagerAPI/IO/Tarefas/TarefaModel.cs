@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using FreelanceManagerAPI.Data.Entities;
 using FreelanceManagerAPI.Data.Entities.Enum;
 
 namespace FreelanceManagerAPI.IO.Tarefas
@@ -18,9 +19,12 @@ namespace FreelanceManagerAPI.IO.Tarefas
         public string Description { get; set; }
         [MaxLength(100)]
         public string Notes { get; set; }
-
+        public Guid? ProjectId { get; set; }
+        public Guid? ApplicationUserId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public TarefaStatus Status { get; set; } = TarefaStatus.Created;
+
+
     }
 }

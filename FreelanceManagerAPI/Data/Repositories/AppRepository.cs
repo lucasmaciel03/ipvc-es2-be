@@ -74,14 +74,10 @@ namespace FreelanceManagerAPI.Data.Repositories
 
         public IQueryable<TEntity> GetEntityAsNoTracking() => EntitySet.Where(WhereIQueryableIsSystem).Where(WhereIQueryableIsDeleted).AsNoTracking();
 
-        public IQueryable<TEntity> GetEntityAsNoTrackingWithoutTenantWhere() => EntitySet.Where(WhereIQueryableIsSystem).Where(WhereIQueryableIsDeleted).AsNoTracking();
-
         public IQueryable<TEntity> GetEntityAsNoTracking(Expression<Func<TEntity, bool>> where) => EntitySet.Where(WhereIQueryableIsSystem).Where(WhereIQueryableIsDeleted).Where(where).AsNoTracking();
 
         public IQueryable<TEntity> GetEntityAsNoTrackingWithoutIsSystemWhere(Expression<Func<TEntity, bool>> where) => EntitySet.Where(WhereIQueryableIsDeleted).Where(where).AsNoTracking();
         public IQueryable<TEntity> GetEntityAsNoTrackingWithoutIsDeletedWhere(Expression<Func<TEntity, bool>> where) => EntitySet.Where(WhereIQueryableIsSystem).Where(where).AsNoTracking();
-
-        public IQueryable<TEntity> GetEntityAsNoTrackingWithoutTenantWhere(Expression<Func<TEntity, bool>> where) => EntitySet.Where(where).AsNoTracking();
 
         public virtual async Task<IEnumerable<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> where) => await WhereIQueryable(where).ToListAsync();
 

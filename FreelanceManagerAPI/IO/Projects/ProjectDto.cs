@@ -23,6 +23,7 @@ namespace FreelanceManagerAPI.IO.Projects
             Notes = entity.Notes;
             Status = entity.Status;
             ClientId = entity.ClientId;
+            ApplicationUserId = entity.ApplicationUserId;
         }
 
         public string Code { get; set; }
@@ -31,6 +32,7 @@ namespace FreelanceManagerAPI.IO.Projects
         public string Notes { get; set; }
         public ProjectStatus Status { get; set; } = ProjectStatus.Created;
         public Guid? ClientId { get; set; }
+        public string? ApplicationUserId { get; set; }
 
 
     }

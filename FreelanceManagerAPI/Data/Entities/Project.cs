@@ -21,6 +21,7 @@ namespace FreelanceManagerAPI.Data.Entities
             InternalNumber = number;
             Status = model.Status;
             ClientId = model.ClientId;
+            ApplicationUserId = model.ApplicationUserId;
 
         }
         public string Code { get; set; }
@@ -29,8 +30,10 @@ namespace FreelanceManagerAPI.Data.Entities
         public string Notes { get; set; }
         public int InternalNumber { get; set; }
         public ProjectStatus Status { get; set; } = ProjectStatus.Created;
+        public string? ApplicationUserId { get; set; }
         public Guid? ClientId { get; set; }
         public Client Client { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         public List<Tarefa> Tarefas { get; set; }
         public List<ProjectUser> ProjectUsers { get; set; }
     }

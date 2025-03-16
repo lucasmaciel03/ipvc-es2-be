@@ -29,6 +29,8 @@ namespace FreelanceManagerAPI.IO.Tarefas
         public string Notes { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public Guid? ProjectId { get; set; }
+        public Guid? ApplicationUserId { get; set; }
         public TarefaStatus Status { get; set; } = TarefaStatus.Created;
 
     }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FreelanceManagerAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250316150013_Add Tarefas")]
-    partial class AddTarefas
+    [Migration("20250316153221_CorrectMigrationsFix")]
+    partial class CorrectMigrationsFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

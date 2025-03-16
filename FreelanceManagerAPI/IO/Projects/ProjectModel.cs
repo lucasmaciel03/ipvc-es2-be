@@ -18,6 +18,7 @@ namespace FreelanceManagerAPI.IO.Projects
         [Required, MaxLength(100)]
         public string Description { get; set; }
         public Guid? ClientId { get; set; }
+        public string? ApplicationUserId { get; set; }
         public ProjectStatus Status { get; set; } = ProjectStatus.Created;
         [MaxLength(500)]
         public string Notes { get; set; }

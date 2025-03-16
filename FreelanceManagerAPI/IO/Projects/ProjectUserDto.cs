@@ -25,7 +25,6 @@ namespace FreelanceManagerAPI.IO.Projects
             Notes = entity.Notes;
 
         }
-        public Guid Id { get; set; }
         public Guid ProjectId { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUserType Role { get; set; } = ApplicationUserType.Normal;

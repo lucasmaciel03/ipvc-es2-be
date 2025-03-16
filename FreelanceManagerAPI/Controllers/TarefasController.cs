@@ -33,8 +33,7 @@ namespace FreelanceManagerAPI.Controllers
 
         [HttpPost()]
         [Route("Create")]
-        [AllowAnonymous]
-        // [Authorize(Roles = ApplicationUserRoles.Admin)]
+        [Authorize(Roles = ApplicationUserRoles.Admin)]
         public async Task<ActionResult> CreateAsync([FromBody] TarefaModel model) => Ok(await _tarefasService.CreateAsync(model));
 
         //PUT: api/Tarefas/id
