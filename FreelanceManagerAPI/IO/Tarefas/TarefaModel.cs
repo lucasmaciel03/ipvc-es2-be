@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using FreelanceManagerAPI.Data.Entities;
 using FreelanceManagerAPI.Data.Entities.Enum;
 
-namespace FreelanceManagerAPI.IO.Projects
+namespace FreelanceManagerAPI.IO.Tarefas
 {
-    public class ProjectModel
+    public class TarefaModel
     {
         public Guid? Id { get; set; }
         [Required, MaxLength(10)]
@@ -17,11 +16,11 @@ namespace FreelanceManagerAPI.IO.Projects
         public string Name { get; set; }
         [Required, MaxLength(100)]
         public string Description { get; set; }
-        public Guid? ClientId { get; set; }
-        public ProjectStatus Status { get; set; } = ProjectStatus.Created;
-        [MaxLength(500)]
+        [MaxLength(100)]
         public string Notes { get; set; }
-        public bool IsActive { get; set; }
 
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public TarefaStatus Status { get; set; } = TarefaStatus.Created;
     }
 }

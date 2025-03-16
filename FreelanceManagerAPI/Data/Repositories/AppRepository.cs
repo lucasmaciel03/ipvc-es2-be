@@ -42,8 +42,6 @@ namespace FreelanceManagerAPI.Data.Repositories
             return entities;
         }
 
-
-
         public async virtual Task<TEntity> Edit(TEntity entity)
         {
             if (entity is not null)

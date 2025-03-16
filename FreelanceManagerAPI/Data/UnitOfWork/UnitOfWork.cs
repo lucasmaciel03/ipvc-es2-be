@@ -11,6 +11,11 @@ namespace FreelanceManagerAPI.Data.UnitOfWork
 
         #region repositories
         private IAppRepository<Client> _clientsRepository;
+        private IAppRepository<Project> _projectsRepository;
+        private IAppRepository<ProjectUser> _projectUsersRepository;
+        private IAppRepository<Tarefa> _tarefasRepository;
+
+
         #endregion
 
         public UnitOfWork(AppDBContext dbContext)
@@ -22,6 +27,18 @@ namespace FreelanceManagerAPI.Data.UnitOfWork
         public IAppRepository<Client> ClientsRepository
         {
             get { return _clientsRepository ??= new AppRepository<Client>(_databaseContext); }
+        }
+        public IAppRepository<Project> ProjectsRepository
+        {
+            get { return _projectsRepository ??= new AppRepository<Project>(_databaseContext); }
+        }
+        public IAppRepository<ProjectUser> ProjectUsersRepository
+        {
+            get { return _projectUsersRepository ??= new AppRepository<ProjectUser>(_databaseContext); }
+        }
+        public IAppRepository<Tarefa> TarefasRepository
+        {
+            get { return _tarefasRepository ??= new AppRepository<Tarefa>(_databaseContext); }
         }
         #endregion
 

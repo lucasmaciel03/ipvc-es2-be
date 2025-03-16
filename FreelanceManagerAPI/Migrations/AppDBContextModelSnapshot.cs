@@ -202,7 +202,7 @@ namespace FreelanceManagerAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ClientId")
+                    b.Property<Guid?>("ClientId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Code")
@@ -321,6 +321,82 @@ namespace FreelanceManagerAPI.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("ProjectUsers");
+                });
+
+            modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Tarefa", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("InternalNumber")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsSystem")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("bytea");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Tarefas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -459,9 +535,7 @@ namespace FreelanceManagerAPI.Migrations
                 {
                     b.HasOne("FreelanceManagerAPI.Data.Entities.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientId");
 
                     b.Navigation("Client");
                 });
@@ -475,10 +549,25 @@ namespace FreelanceManagerAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("FreelanceManagerAPI.Data.Entities.Project", "Project")
-                        .WithMany()
+                        .WithMany("ProjectUsers")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Tarefa", b =>
+                {
+                    b.HasOne("FreelanceManagerAPI.Data.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("FreelanceManagerAPI.Data.Entities.Project", "Project")
+                        .WithMany("Tarefas")
+                        .HasForeignKey("ProjectId");
 
                     b.Navigation("ApplicationUser");
 
@@ -534,6 +623,13 @@ namespace FreelanceManagerAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Project", b =>
+                {
+                    b.Navigation("ProjectUsers");
+
+                    b.Navigation("Tarefas");
                 });
 #pragma warning restore 612, 618
         }

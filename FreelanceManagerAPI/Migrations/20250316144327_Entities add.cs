@@ -5,7 +5,7 @@
 namespace FreelanceManagerAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class ClientEntity : Migration
+    public partial class Entitiesadd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

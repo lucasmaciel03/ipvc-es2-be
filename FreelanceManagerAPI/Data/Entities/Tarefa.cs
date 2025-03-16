@@ -4,34 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using FreelanceManagerAPI.Data.Entities.Base;
 using FreelanceManagerAPI.Data.Entities.Enum;
-using FreelanceManagerAPI.IO.Projects;
+using FreelanceManagerAPI.IO.Tarefas;
 
 namespace FreelanceManagerAPI.Data.Entities
 {
-    public class Project : EntityBase
+    public class Tarefa : EntityBase
     {
-        public Project() { }
-
-        public Project(ProjectModel model, int number)
+        public Tarefa() { }
+        public Tarefa(TarefaModel model, int number)
         {
             Code = model.Code;
             Name = model.Name;
             Description = model.Description;
             Notes = model.Notes;
             InternalNumber = number;
-            Status = model.Status;
-            ClientId = model.ClientId;
 
         }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public TarefaStatus Status { get; set; } = TarefaStatus.Created;
         public string Notes { get; set; }
         public int InternalNumber { get; set; }
-        public ProjectStatus Status { get; set; } = ProjectStatus.Created;
-        public Guid? ClientId { get; set; }
-        public Client Client { get; set; }
-        public List<Tarefa> Tarefas { get; set; }
-        public List<ProjectUser> ProjectUsers { get; set; }
+        public string? ApplicationUserId { get; set; }
+        public Guid? ProjectId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+        public Project Project { get; set; }
     }
 }

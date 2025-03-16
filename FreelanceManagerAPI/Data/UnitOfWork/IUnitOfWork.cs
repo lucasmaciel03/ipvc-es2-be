@@ -7,6 +7,9 @@ namespace FreelanceManagerAPI.Data.UnitOfWork
     {
         #region repositories
         IAppRepository<Client> ClientsRepository { get; }
+        IAppRepository<Project> ProjectsRepository { get; }
+        IAppRepository<ProjectUser> ProjectUsersRepository { get; }
+        IAppRepository<Tarefa> TarefasRepository { get; }
         #endregion
 
         int Commit();

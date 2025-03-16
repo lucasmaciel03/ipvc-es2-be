@@ -25,9 +25,6 @@ namespace FreelanceManagerAPI.Data.Entities
         public DateTime? JoinedAt { get; set; }
         public DateTime? RemovedAt { get; set; }
         public string Notes { get; set; }
-
-
-
         public Project Project { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
