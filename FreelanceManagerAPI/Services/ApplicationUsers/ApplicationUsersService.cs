@@ -54,8 +54,11 @@ namespace FreelanceManagerAPI.Services.ApplicationUsers
             applicationUser.LockoutEnabled = !model.IsActive;
             await _userManager.UpdateAsync(applicationUser);
 
-            const string defaultPassword = "Viana2025!";
-            await _userManager.AddPasswordAsync(applicationUser, defaultPassword);
+            var result = await _userManager.AddPasswordAsync(applicationUser, model.password);
+            if (!result.Succeeded)
+            {
+                Console.WriteLine(result.Errors.FirstOrDefault()?.Description);
+            }
 
             if (model.Roles.Any())
             {
