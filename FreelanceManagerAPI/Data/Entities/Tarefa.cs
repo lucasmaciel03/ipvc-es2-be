@@ -23,6 +23,7 @@ namespace FreelanceManagerAPI.Data.Entities
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public hourly_rate
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public TarefaStatus Status { get; set; } = TarefaStatus.Created;
