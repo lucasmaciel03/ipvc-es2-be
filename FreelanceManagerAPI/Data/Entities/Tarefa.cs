@@ -16,14 +16,16 @@ namespace FreelanceManagerAPI.Data.Entities
             Code = model.Code;
             Name = model.Name;
             Description = model.Description;
+            HourlyRate = model.HourlyRate;
             Notes = model.Notes;
             InternalNumber = number;
+            ApplicationUserId = model.ApplicationUserId?.ToString();
 
         }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public hourly_rate
+        public decimal? HourlyRate { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public TarefaStatus Status { get; set; } = TarefaStatus.Created;

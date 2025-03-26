@@ -3,6 +3,7 @@ using System;
 using FreelanceManagerAPI.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FreelanceManagerAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250321161328_AddTimesheetEntity")]
+    partial class AddTimesheetEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,7 +196,7 @@ namespace FreelanceManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients", (string)null);
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Project", b =>
@@ -263,7 +266,7 @@ namespace FreelanceManagerAPI.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.ProjectUser", b =>
@@ -325,7 +328,7 @@ namespace FreelanceManagerAPI.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("ProjectUsers", (string)null);
+                    b.ToTable("ProjectUsers");
                 });
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Tarefa", b =>
@@ -408,7 +411,7 @@ namespace FreelanceManagerAPI.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Tarefas", (string)null);
+                    b.ToTable("Tarefas");
                 });
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.Timesheet", b =>
@@ -461,7 +464,7 @@ namespace FreelanceManagerAPI.Migrations
 
                     b.HasIndex("TarefaId");
 
-                    b.ToTable("Timesheets", (string)null);
+                    b.ToTable("Timesheets");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
