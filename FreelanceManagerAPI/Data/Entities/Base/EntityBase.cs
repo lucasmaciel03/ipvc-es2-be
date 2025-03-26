@@ -18,7 +18,7 @@ namespace FreelanceManagerAPI.Data.Entities.Base
         public virtual DateTime? UpdatedAt { get; set; }
         public virtual string? UpdatedBy { get; set; }
         [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public byte[]? RowVersion { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual bool IsSystem { get; set; }
         public virtual bool IsDeleted { get; set; }
