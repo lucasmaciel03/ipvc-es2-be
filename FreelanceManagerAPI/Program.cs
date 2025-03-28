@@ -8,6 +8,7 @@ using FreelanceManagerAPI.Services.AppConstants;
 using FreelanceManagerAPI.Services.ApplicationUsers;
 using FreelanceManagerAPI.Services.Authentication;
 using FreelanceManagerAPI.Services.Clients;
+using FreelanceManagerAPI.Services.Projects;
 using FreelanceManagerAPI.Services.Tarefas;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -53,6 +54,7 @@ builder.Services.AddScoped<IApplicationUsersService, ApplicationUsersService>();
 builder.Services.AddScoped<IAppConstantsService, AppConstantsService>();
 builder.Services.AddScoped<IClientsService, ClientsService>();
 builder.Services.AddScoped<ITarefasService, TarefasService>();
+builder.Services.AddScoped<IProjectsService, ProjectsService>();
 
 
 var app = builder.Build();

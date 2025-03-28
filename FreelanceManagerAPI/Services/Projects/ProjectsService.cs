@@ -148,5 +148,62 @@ namespace FreelanceManagerAPI.Services.Projects
 
         #endregion
 
+        #region ProjectInvites
+        public async Task<List<ProjectInviteDto>> GetProjectInvitesAsync(Guid projectId)
+        {
+            return await _unitOfWork.
+                ProjectInvitesRepository.
+                GetEntityAsNoTracking(entity => entity.ProjectId == projectId).
+                Select(entity => new ProjectInviteDto(entity)).
+                ToListAsync();
+        }
+
+        public async Task<ProjectInviteDto> CreateProjectInviteAsync(ProjectInviteModel model)
+        {
+            var entity = await _unitOfWork.
+                ProjectInvitesRepository.
+                CreateAsync(new ProjectInvite(model));
+
+            return await GetProjectInviteByIdAsync(entity.Id);
+        }
+        public async Task<ProjectInviteDto> GetProjectInviteByIdAsync(Guid id)
+        {
+            return await _unitOfWork.
+                ProjectInvitesRepository.
+                GetEntityAsNoTracking(entity => entity.Id == id).
+                Include(entity => entity.InvitedApplicationUser).
+                Include(entity => entity.SenderApplicationUser).
+                Include(entity => entity.Project).
+                Select(entity => new ProjectInviteDto(entity)).
+                FirstAsync();
+        }
+        public async Task DeleteProjectInviteAsync(ProjectInviteModel model)
+        {
+            var entity = await _unitOfWork.
+                ProjectInvitesRepository.
+                GetEntity(entity => entity.ProjectId == model.ProjectId).
+                FirstAsync();
+
+            if (entity is not null)
+            {
+                await _unitOfWork.ProjectInvitesRepository.Delete(entity);
+            }
+        }
+        public async Task<ProjectInviteDto> UpdateProjectInviteAsync(Guid id, ProjectInviteModel model)
+        {
+            var entity = await _unitOfWork.
+                ProjectInvitesRepository.
+                GetEntityAsNoTracking(entity => entity.Id == id).
+                FirstAsync();
+
+            entity.Status = model.Status;
+            entity.Description = model.Description;
+            await _unitOfWork.ProjectInvitesRepository.Edit(entity);
+
+            return await GetProjectInviteByIdAsync(id);
+        }
+
+
+        #endregion
     }
 }

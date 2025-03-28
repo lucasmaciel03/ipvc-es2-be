@@ -26,5 +26,13 @@ namespace FreelanceManagerAPI.Services.Projects
         #region Tarefas
         Task<List<TarefaDto>> GetTarefasAsync(Guid projectId);
         #endregion
+        #region ProjectInvites
+        Task<List<ProjectInviteDto>> GetProjectInvitesAsync(Guid projectId);
+        Task<ProjectInviteDto> CreateProjectInviteAsync(ProjectInviteModel model);
+        Task DeleteProjectInviteAsync(ProjectInviteModel model);
+        Task<ProjectInviteDto> UpdateProjectInviteAsync(Guid id, ProjectInviteModel model);
+        Task<ProjectInviteDto> GetProjectInviteByIdAsync(Guid id);
+
+        #endregion
     }
 }

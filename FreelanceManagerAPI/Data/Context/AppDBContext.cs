@@ -21,6 +21,7 @@ namespace FreelanceManagerAPI.Data.Context
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectUser> ProjectUsers { get; set; }
         public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<ProjectInvite> ProjectInvites { get; set; }
         #endregion
         protected override void OnModelCreating(ModelBuilder builder)
         {

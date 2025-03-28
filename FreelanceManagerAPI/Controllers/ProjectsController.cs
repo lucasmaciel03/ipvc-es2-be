@@ -17,9 +17,9 @@ namespace FreelanceManagerAPI.Controllers
     {
         readonly IProjectsService _projectsService;
 
-        public ProjectsController(IProjectsService tarefasService)
+        public ProjectsController(IProjectsService projectsService)
         {
-            _projectsService = tarefasService;
+            _projectsService = projectsService;
         }
 
         // GET: api/Projects
@@ -73,6 +73,30 @@ namespace FreelanceManagerAPI.Controllers
         [HttpGet("{id}/Tarefas")]
         public async Task<ActionResult> GetTarefasAsync(Guid id) => Ok(await _projectsService.GetTarefasAsync(id));
 
+        #endregion
+        #region ProjectInvites
+        //GET: api/Project/:id/Invites
+        [HttpGet("{id}/Invites")]
+        public async Task<ActionResult> GetProjectInvitesAsync(Guid id) => Ok(await _projectsService.GetProjectInvitesAsync(id));
+
+        //POST: api/Project/:id/Invites/Create
+        [HttpPost("{id}/Invites/Create")]
+        public async Task<ActionResult> CreateProjectInviteAsync([FromBody] ProjectInviteModel model) => Ok(await _projectsService.CreateProjectInviteAsync(model));
+
+        //DELETE: api/Project/:id/Invites/Delete
+        [HttpDelete("{id}/Invites/Delete")]
+        public async Task<ActionResult> DeleteProjectInviteAsync([FromBody] ProjectInviteModel model)
+        {
+            await _projectsService.DeleteProjectInviteAsync(model);
+            return Ok();
+        }
+        //PUT: api/Project/:id/Invites/Update
+        [HttpPut("{id}/Invites/Update")]
+        public async Task<ActionResult> UpdateProjectInviteAsync(Guid id, [FromBody] ProjectInviteModel model) => Ok(await _projectsService.UpdateProjectInviteAsync(id, model));
+
+        //GET: api/Project/:id/Invites/:id
+        [HttpGet("{id}/Invites/{inviteId}")]
+        public async Task<ActionResult> GetProjectInviteByIdAsync(Guid id) => Ok(await _projectsService.GetProjectInviteByIdAsync(id));
         #endregion
     }
 }
