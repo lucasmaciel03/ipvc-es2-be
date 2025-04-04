@@ -14,6 +14,7 @@ namespace FreelanceManagerAPI.Data.UnitOfWork
         private IAppRepository<Project> _projectsRepository;
         private IAppRepository<ProjectUser> _projectUsersRepository;
         private IAppRepository<Tarefa> _tarefasRepository;
+        private IAppRepository<Timesheet> _timesheetRepository;
 
 
         #endregion

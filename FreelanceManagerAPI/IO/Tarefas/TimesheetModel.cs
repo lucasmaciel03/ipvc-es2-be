@@ -10,7 +10,7 @@ namespace FreelanceManagerAPI.IO.Tarefas
                 public Guid TarefaId { get; set; }
                 public DateTime? Date { get; set; }
                 [Required]
-                public decimal Hours { get; set; }
+                public string Hours { get; set; }
                 [MaxLength(500)]
                 public string Notes { get; set; }
             

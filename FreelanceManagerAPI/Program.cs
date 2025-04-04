@@ -88,6 +88,7 @@ builder.Services.AddScoped<IApplicationUsersService, ApplicationUsersService>();
 builder.Services.AddScoped<IAppConstantsService, AppConstantsService>();
 builder.Services.AddScoped<IClientsService, ClientsService>();
 builder.Services.AddScoped<ITarefasService, TarefasService>();
+builder.Services.AddScoped<ITimesheetService, TimesheetService>();
 
 
 var app = builder.Build();
