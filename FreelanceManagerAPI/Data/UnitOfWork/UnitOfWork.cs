@@ -41,6 +41,11 @@ namespace FreelanceManagerAPI.Data.UnitOfWork
         {
             get { return _tarefasRepository ??= new AppRepository<Tarefa>(_databaseContext); }
         }
+        
+        public IAppRepository<Timesheet> TimesheetsRepository
+        {
+            get { return _timesheetRepository ??= new AppRepository<Timesheet>(_databaseContext); }
+        }
         #endregion
 
         public int Commit() => _databaseContext.SaveChanges();
