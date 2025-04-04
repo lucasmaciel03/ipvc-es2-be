@@ -3,6 +3,7 @@ using System;
 using FreelanceManagerAPI.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FreelanceManagerAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250326223433_rowversionNullable")]
+    partial class rowversionNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -262,71 +265,6 @@ namespace FreelanceManagerAPI.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.ProjectInvite", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("InvitedApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("InvitedAt")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsSystem")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
-
-                    b.Property<string>("SenderApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InvitedApplicationUserId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("SenderApplicationUserId");
-
-                    b.ToTable("ProjectInvites");
                 });
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.ProjectUser", b =>
@@ -669,33 +607,6 @@ namespace FreelanceManagerAPI.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Client");
-                });
-
-            modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.ProjectInvite", b =>
-                {
-                    b.HasOne("FreelanceManagerAPI.Data.Entities.ApplicationUser", "InvitedApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("InvitedApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FreelanceManagerAPI.Data.Entities.Project", "Project")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FreelanceManagerAPI.Data.Entities.ApplicationUser", "SenderApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("SenderApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("InvitedApplicationUser");
-
-                    b.Navigation("Project");
-
-                    b.Navigation("SenderApplicationUser");
                 });
 
             modelBuilder.Entity("FreelanceManagerAPI.Data.Entities.ProjectUser", b =>

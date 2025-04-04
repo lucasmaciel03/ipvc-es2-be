@@ -11,6 +11,7 @@ namespace FreelanceManagerAPI.Data.UnitOfWork
         IAppRepository<ProjectUser> ProjectUsersRepository { get; }
         IAppRepository<Tarefa> TarefasRepository { get; }
         IAppRepository<ProjectInvite> ProjectInvitesRepository { get; }
+        IAppRepository<Timesheet> TimesheetsRepository { get; }
         #endregion
 
         int Commit();

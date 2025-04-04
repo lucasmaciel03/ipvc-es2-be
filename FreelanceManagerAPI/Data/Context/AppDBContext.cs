@@ -22,11 +22,14 @@ namespace FreelanceManagerAPI.Data.Context
         public DbSet<ProjectUser> ProjectUsers { get; set; }
         public DbSet<Tarefa> Tarefas { get; set; }
         public DbSet<ProjectInvite> ProjectInvites { get; set; }
+        public DbSet<Timesheet> Timesheets { get; set; }
         #endregion
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
         }
+        
 
         public override int SaveChanges()
         {
